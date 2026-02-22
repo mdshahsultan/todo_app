@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../style/style.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -8,7 +10,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List ToDoList = [{"1":"1"},{"1":"1"},{"1":"1"}];
+  List ToDoList = [];
+  String item = "";
+
+  MyInputOnChange(content){
+    setState(() {
+      item = content;
+      //ToDoList.add({"item": content});
+    });
+  }
+
+  AddItem(){
+    ToDoList.add({"item": item});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,12 +42,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: [
                     Expanded(
-                      //flex: 70,
-                        child: TextFormField()
+                      flex: 70,
+                        child: TextFormField(onChanged: (content) {MyInputOnChange(content);}, decoration: AppInputDecoration("List Item"),)
                     ),
                     Expanded(
-                      //flex: 30,
-                        child: ElevatedButton(onPressed: (){}, child: Text("Done"))
+                      flex: 30,
+                        child: Padding(padding: EdgeInsets.only(left: 5), child: ElevatedButton(onPressed: (){AddItem();}, child: Text("Add"), style: AppButtonStyle(),),)
                     ),
                   ],
                 )
@@ -43,7 +58,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: ToDoList.length,
                     itemBuilder: (context, index){
                       return Card(
-                        child: Text("List"),
+                        child: SizeBox50(
+                          Row(
+                            children: [
+                              Expanded(
+                                  flex: 80,
+                                  child: Text(ToDoList[index]["item"].toString()),
+                              ),
+                              Expanded(
+                                  flex: 20,
+                                  child: TextButton(onPressed: (){}, child: Icon(Icons.delete),)
+                              ),
+                            ],
+                          )
+                        ),
                       );
                     }
                 ),
