@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         foregroundColor: Colors.white,
       ),
-      body: Text("Rubel"),
+      body: Text("Shah Sultan Rubel"),
     );
   }
 }
