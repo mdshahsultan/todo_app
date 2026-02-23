@@ -7,11 +7,14 @@ class HomeScreen extends StatefulWidget {
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
+
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   List ToDoList = [];
   String item = "";
+  //After add item automatically clear item name
+  TextEditingController itemController = TextEditingController();
 
   MyInputOnChange(content){
     //View refresh and item add
@@ -22,8 +25,13 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   AddItem(){
+    //If don't type item name not add this
+    if(item.trim().isEmpty) return;
     setState(() {
       ToDoList.add({"item" : item});
+      //This controller used for clear the item from textField
+      itemController.clear();
+      item = "";
     });
   }
 
@@ -53,6 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       flex: 70,
                         child: TextFormField(
+                          //This controller used for clear the item from textField
+                          controller: itemController,
                           onChanged: (content) {MyInputOnChange(content);},
                           decoration: AppInputDecoration("Item Name"),
                           cursorColor: Colors.green,
