@@ -14,6 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String item = "";
 
   MyInputOnChange(content){
+    //View refresh and item add
     setState(() {
       item = content;
       //ToDoList.add({"item": content});
@@ -21,7 +22,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   AddItem(){
-    ToDoList.add({"item": item});
+    setState(() {
+      ToDoList.add({"item" : item});
+    });
+  }
+
+  RemoveItem(index){
+    setState(() {
+      ToDoList.removeAt(index);
+    });
   }
 
   @override
@@ -29,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green.shade500,
-        title: Text("To Do App"),
+        title: Text("Todo App"),
         centerTitle: true,
         foregroundColor: Colors.white,
       ),
@@ -43,8 +52,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Expanded(
                       flex: 70,
-                        child: TextFormField(onChanged: (content) {MyInputOnChange(content);}, decoration: AppInputDecoration("List Item"),)
+                        child: TextFormField(
+                          onChanged: (content) {MyInputOnChange(content);},
+                          decoration: AppInputDecoration("Item Name"),
+                          cursorColor: Colors.green,
+                        ),
                     ),
+
                     Expanded(
                       flex: 30,
                         child: Padding(padding: EdgeInsets.only(left: 5), child: ElevatedButton(onPressed: (){AddItem();}, child: Text("Add"), style: AppButtonStyle(),),)
@@ -67,7 +81,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Expanded(
                                   flex: 20,
-                                  child: TextButton(onPressed: (){}, child: Icon(Icons.delete),)
+                                  child: TextButton(
+                                    onPressed: (){RemoveItem(index);},
+                                    child: Icon(
+                                        Icons.delete,
+                                        color: Colors.green,
+                                    ),
+                                  ),
                               ),
                             ],
                           )

@@ -6,7 +6,32 @@ InputDecoration AppInputDecoration(lable){
   return InputDecoration(
     contentPadding: EdgeInsets.fromLTRB(20, 10, 10, 20),
     border: OutlineInputBorder(),
-    labelText: lable
+    labelText: lable,
+    // Label color (normal)
+      labelStyle: const TextStyle(
+        color: Colors.black,
+      ),
+    // Label color (when focused)
+    floatingLabelStyle: const TextStyle(
+      color: Colors.green,
+      //fontWeight: FontWeight.bold,
+    ),
+
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.green,
+          width: 1.5,
+        ),
+        borderRadius: BorderRadius.circular(5),
+      ),
+
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.green,
+          width: 1.5,
+        ),
+        borderRadius: BorderRadius.circular(5),
+      ),
   );
 }
 

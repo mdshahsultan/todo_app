@@ -8,8 +8,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "To Do App",
-      theme: ThemeData(primaryColor: Colors.blue),
+      title: "Todo App",
+      // theme: ThemeData(
+      //     primaryColor: Colors.blue,
+      //     cardColor: Colors.blue,
+      // ),
+
       home: HomeScreen(),
     );
   }
