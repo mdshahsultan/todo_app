@@ -9,10 +9,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Todo App",
-      // theme: ThemeData(
-      //     primaryColor: Colors.blue,
-      //     cardColor: Colors.blue,
-      // ),
+      theme: ThemeData(
+          primaryColor: Colors.blue,
+      ),
 
       home: HomeScreen(),
     );

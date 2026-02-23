@@ -1,7 +1,7 @@
 import 'dart:isolate';
-
 import 'package:flutter/material.dart';
 
+//Input Decoration Style
 InputDecoration AppInputDecoration(lable){
   return InputDecoration(
     contentPadding: EdgeInsets.fromLTRB(20, 10, 10, 20),
@@ -35,6 +35,7 @@ InputDecoration AppInputDecoration(lable){
   );
 }
 
+//Button Style
 ButtonStyle AppButtonStyle(){
   return ElevatedButton.styleFrom(
     padding: EdgeInsets.all(22),
@@ -46,6 +47,7 @@ ButtonStyle AppButtonStyle(){
   );
 }
 
+//Space Style
 SizedBox SizeBox50(child){
   return SizedBox(
     height: 50,
